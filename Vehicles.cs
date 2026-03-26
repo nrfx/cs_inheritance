@@ -12,6 +12,7 @@ namespace cs_inheritance
     }
     public class Vehicle
     {
+        public static Random rnd = new Random();
         public int WheelsCount { get; set; }
         public virtual String GetInfo()
         {
@@ -32,6 +33,16 @@ namespace cs_inheritance
             str += String.Format("\nТип: {0}", this.type);
             str += String.Format("\nРадиус колес: {0}", this.WheelRadius);
             return str;
+        }
+
+        public static Bicycle Generate()
+        {
+            return new Bicycle
+            {
+                WheelsCount = 1 + rnd.Next(3),
+                WheelRadius = 12 + rnd.Next(18),
+                type = (BicycleType)rnd.Next(3)
+            };
         }
     }
 
@@ -57,6 +68,17 @@ namespace cs_inheritance
             str += String.Format("\nКоличество дверей: {0}", this.DoorCount);
             return str;
         }
+
+        public static Car Generate()
+        {
+            return new Car
+            {
+                WheelsCount = 4,
+                EngineCapacity = 4 + rnd.Next(18),
+                DoorCount = 2 + rnd.Next(4),
+                type = (CarType)rnd.Next(3)
+            };
+        }
     }
 
     public enum AirplaneEngineType
@@ -76,6 +98,16 @@ namespace cs_inheritance
             str += String.Format("\nТип: {0}", this.type);
             str += String.Format("\nВысота полета: {0}", this.FlightLevel);
             return str;
+        }
+
+        public static Airplane Generate()
+        {
+            return new Airplane
+            {
+                WheelsCount = 3 + rnd.Next(29),
+                FlightLevel = 1000 + rnd.Next(10000),
+                type = (AirplaneEngineType)rnd.Next(2)
+            };
         }
     }
 }

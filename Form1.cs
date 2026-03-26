@@ -19,13 +19,13 @@ namespace cs_inheritance
                 switch (rnd.Next() % 3)
                 {
                     case 0:
-                        this.vehicles.Add(new Bicycle() { WheelsCount = rnd.Next() % 101, WheelRadius = 20 });
+                        this.vehicles.Add(Bicycle.Generate());
                         break;
                     case 1:
-                        this.vehicles.Add(new Car() { WheelsCount = rnd.Next() % 101, EngineCapacity = 2000, DoorCount = 4 });
+                        this.vehicles.Add(Car.Generate());
                         break;
                     case 2:
-                        this.vehicles.Add(new Airplane() { WheelsCount = rnd.Next() % 101, FlightLevel = 10000 });
+                        this.vehicles.Add(Airplane.Generate());
                         break;
                 }
             }
@@ -62,7 +62,7 @@ namespace cs_inheritance
         {
             if (this.vehicles.Count ==  0)
             {
-                txtOut.Text = "Нет данных"; 
+                txtOut.Text = "Пусто O_o"; 
                 return;
             }
             
