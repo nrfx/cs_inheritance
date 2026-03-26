@@ -19,13 +19,13 @@ namespace cs_inheritance
                 switch (rnd.Next() % 3)
                 {
                     case 0:
-                        this.vehicles.Add(new Bicycle() { WheelsCount = 2, WheelRadius = 20 });
+                        this.vehicles.Add(new Bicycle() { WheelsCount = rnd.Next() % 101, WheelRadius = 20 });
                         break;
                     case 1:
-                        this.vehicles.Add(new Car() { WheelsCount = 4, EngineCapacity = 2000, DoorCount = 4 });
+                        this.vehicles.Add(new Car() { WheelsCount = rnd.Next() % 101, EngineCapacity = 2000, DoorCount = 4 });
                         break;
                     case 2:
-                        this.vehicles.Add(new Airplane() { WheelsCount = 6, FlightLevel = 10000 });
+                        this.vehicles.Add(new Airplane() { WheelsCount = rnd.Next() % 101, FlightLevel = 10000 });
                         break;
                 }
             }
@@ -69,9 +69,7 @@ namespace cs_inheritance
             var vehicle = this.vehicles[0];
             this.vehicles.RemoveAt(0);
 
-            if (vehicle is Bicycle) { txtOut.Text = "Это велосипед"; }
-            else if (vehicle is Car) { txtOut.Text = "Это машина"; }
-            else if (vehicle is Airplane) { txtOut.Text = "Это самолет"; }
+            txtOut.Text = vehicle.GetInfo();
             ShowInfo();
         }
     }
